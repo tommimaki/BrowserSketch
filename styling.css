@@ -1,0 +1,31 @@
+/* * {
+  background-color: aqua;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 300px;
+  border: 3px solid black;
+}
+.rows {
+  display: flex;
+  flex: 1;
+  border: 1px solid gray;
+}
+
+.column {
+  flex: 1;
+  background-color: rgb(60, 255, 0);
+  border: 1px solid rgb(116, 26, 26);
+}
+
+.title {
+  margin-left: 30%;
+}
+
+#amount {
+  margin-left: 35%;
+  margin-bottom: 10px;
+}
