@@ -1,16 +1,23 @@
 const container = document.querySelector(".container");
+const divs = document.querySelectorAll(".column");
 
+// click eventlistener and trigger for resetting grid
 let amount = document
   .getElementById("amount")
   .addEventListener("click", function () {
     resetGrid();
   });
 
+// make eventlistener for erase-button, that triggers erase function
+
+
+// makes grid, default size 10 squares each side.
 function makeGrid(numDivs = 10) {
+  //removes existing grid if making new.
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
-
+  // loops to set rows and columns
   for (let i = 0; i < numDivs; i++) {
     let rows = document.createElement("div");
     rows.classList.add("rows");
@@ -21,7 +28,7 @@ function makeGrid(numDivs = 10) {
       rows.appendChild(column);
     }
   }
-
+  // makes drawing possible by changing bg-color of squares when hovered
   const divs = document.querySelectorAll(".column");
   divs.forEach((div) => {
     div.addEventListener("mouseover", () => {
@@ -29,9 +36,11 @@ function makeGrid(numDivs = 10) {
     });
   });
 }
+
+// calls function to create default grid when page first opens
 makeGrid();
 
-
+// reset grid, create new one with size defined by prompt
 function resetGrid() {
   makeGrid(0);
   let rows = 0;
@@ -40,13 +49,21 @@ function resetGrid() {
       "How many rows/columns do you want the grid? (e.g. entering 10 will result in a 10x10 grid)"
     );
   }
-  
-  makeGrid(rows);
-  
 
-  // for  (let i=0; i<squares.length; i++) {
-  //     squares[i].style.background = 'white';
-  //     squares[i].addEventListener('mouseenter', function() {
-  //         squares[i].style.background = 'black';});
-  // }
+  makeGrid(rows);
+
+  document.getElementById("eraser").addEventListener("click", function () {
+    erase();
+  });
+
+  // erase function that colors squares back to base color.
+  function erase() {
+    const divs = document.querySelectorAll(".column");
+    divs.forEach((div) => {
+      div.addEventListener("mouseover", () => {
+        div.setAttribute("style", "color: blue; background: rgb(60, 255, 0);");
+      });
+    });
+  }
 }
+
